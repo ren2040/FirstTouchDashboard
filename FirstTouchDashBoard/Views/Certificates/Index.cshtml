@@ -1,0 +1,98 @@
+﻿@model IEnumerable<FirstTouchDashBoard.Models.FirstTouchCertificate>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    @using (Html.BeginForm("Index", "Certificates", FormMethod.Get))
+    {
+        <tr>
+        <th>
+            @Html.ActionLink("Property ID", "Index", new { SortOrder = ViewBag.propertyid })
+        </th>
+        <th>
+            @Html.ActionLink("UPRN", "Index", new { SortOrder = ViewBag.uprn })
+        </th>
+        <th>
+            @Html.ActionLink("Address Line 1", "Index", new { SortOrder = ViewBag.addressline1 })
+        </th>
+        <th>
+            @Html.ActionLink("Certificate Type", "Index", new { SortOrder = ViewBag.certtype })
+        </th>
+        <th>
+            @Html.ActionLink("Post Code", "Index", new { SortOrder = ViewBag.postcode })
+        </th>
+        <th>
+            @Html.ActionLink("Operative Name", "Index", new { SortOrder = ViewBag.operativename })
+        </th>
+        <th>
+            @Html.ActionLink("Trade Group", "Index", new { SortOrder = ViewBag.tradegroup })
+        </th>
+        <th>
+            @Html.ActionLink("EDOCS ref", "Index", new { SortOrder = ViewBag.eDocsRef })
+        </th>
+        <th>
+            @Html.ActionLink("Status", "Index", new { SortOrder = ViewBag.status })
+        </th>
+        <th>
+            @Html.ActionLink("Date and Time", "Index", new { SortOrder = ViewBag.datetime })
+        </th>
+        <th>
+            @Html.ActionLink("Cause", "Index", new { SortOrder = ViewBag.cause })
+        </th>
+            <th></th>
+            </tr>
+    }
+  
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.propertyid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.uprn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.addressline1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.certtype)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.postcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.operativename)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tradegroup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.eDocsRef)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.datetime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cause)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>

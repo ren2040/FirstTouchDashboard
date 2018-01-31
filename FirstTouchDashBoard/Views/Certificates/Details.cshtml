@@ -1,0 +1,106 @@
+﻿@model FirstTouchDashBoard.Models.FirstTouchCertificate
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FirstTouchCertificate</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.propertyid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.propertyid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uprn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uprn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.addressline1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.addressline1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.certtype)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.certtype)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.postcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.postcode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.operativename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.operativename)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tradegroup)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tradegroup)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.eDocsRef)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eDocsRef)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datetime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datetime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cause)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cause)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
