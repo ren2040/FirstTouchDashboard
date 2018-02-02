@@ -17,93 +17,146 @@ namespace FirstTouchDashBoard.Controllers
         // GET: Certificates
         public ActionResult Index(string SortOrder)
         {
-            ViewBag.propertyid = String.IsNullOrEmpty(SortOrder) ? "propertyid_desc" : "";
-            ViewBag.uprn = SortOrder == "uprn" ? "uprn_desc" : "uprn";
-            ViewBag.uprn = SortOrder == "addressline1" ? "addressline1_desc" : "addressline1";
-            ViewBag.uprn = SortOrder == "certtype" ? "certtype_desc" : "certtype";
-            ViewBag.uprn = SortOrder == "postcode" ? "postcode_desc" : "postcode";
-            ViewBag.uprn = SortOrder == "operativename" ? "operativename_desc" : "operativename";
-            ViewBag.tradegroup = SortOrder == "tradegroup" ? "tradegroup_desc" : "tradegroup";
-            ViewBag.eDocsRef = SortOrder == "eDocsRef" ? "eDocsRef_desc" : "eDocsRef";
-            ViewBag.status = SortOrder == "status" ? "status_desc" : "status";
-            ViewBag.datetime = SortOrder == "datetime" ? "datetime_desc" : "datetime";
-            ViewBag.cause = SortOrder == "cause" ? "cause_desc" : "cause";
 
-            var emp = from s in db.FirstTouchCertificates
-                      select s;
-            switch (SortOrder)
+            var mod = new ExtendedCertificates();
+            mod.lCertificates = db.FirstTouchCertificates.ToList();
+
+
+          
+
+            if (mod.from != null)
             {
-                case "propertyid_desc":
-                    emp = emp.OrderByDescending(s => s.propertyid);
-                    break;
-                case "uprn_desc":
-                    emp = emp.OrderByDescending(s => s.uprn);
-                    break;
-                case "uprn":
-                    emp = emp.OrderBy(s => s.uprn);
-                    break;
-                case "addressline1_desc":
-                    emp = emp.OrderByDescending(s => s.addressline1);
-                    break;
-                case "addressline1":
-                    emp = emp.OrderBy(s => s.addressline1);
-                    break;
-                case "certtype_desc":
-                    emp = emp.OrderByDescending(s => s.certtype);
-                    break;
-                case "certtype":
-                    emp = emp.OrderBy(s => s.certtype);
-                    break;
-                case "postcode":
-                    emp = emp.OrderBy(s => s.postcode);
-                    break;
-                case "operativename":
-                    emp = emp.OrderBy(s => s.operativename);
-                    break;
-                case "tradegroup":
-                    emp = emp.OrderBy(s => s.tradegroup);
-                    break;
-                case "eDocsRef":
-                    emp = emp.OrderBy(s => s.eDocsRef);
-                    break;
-                case "status":
-                    emp = emp.OrderBy(s => s.status);
-                    break;
-                case "datetime":
-                    emp = emp.OrderBy(s => s.datetime);
-                    break;
-                case "cause":
-                    emp = emp.OrderBy(s => s.cause);
-                    break;
-                case "postcode_desc":
-                    emp = emp.OrderByDescending(s => s.postcode);
-                    break;
-                case "operativename_desc":
-                    emp = emp.OrderByDescending(s => s.operativename);
-                    break;
-                case "tradegroup_desc":
-                    emp = emp.OrderByDescending(s => s.tradegroup);
-                    break;
-                case "eDocsRef_desc":
-                    emp = emp.OrderByDescending(s => s.eDocsRef);
-                    break;
-                case "status_desc":
-                    emp = emp.OrderByDescending(s => s.status);
-                    break;
-                case "datetime_desc":
-                    emp = emp.OrderByDescending(s => s.datetime);
-                    break;
-                case "cause_desc":
-                    emp = emp.OrderByDescending(s => s.cause);
-                    break;
-                default:
-                    emp = emp.OrderBy(s => s.propertyid);
-                    break;
-                
+                mod.lCertificates = mod.lCertificates.Where(m => m.datetime > mod.from).ToList();
+            }
+            if(mod.to != null)
+            {
+                mod.lCertificates = mod.lCertificates.Where(m => m.datetime < mod.to).ToList();
+            }
+            if(!string.IsNullOrEmpty(mod.postCode))
+            {
+                mod.lCertificates = mod.lCertificates.Where(m => m.postcode.Contains(m.postcode)).ToList();
+            }
+            if(mod.propertyid != null)
+            {
+                mod.lCertificates = mod.lCertificates.Where(m => m.propertyid.Contains(m.propertyid)).ToList();
+            }
+            if(mod.uprn != null)
+            {
+                mod.lCertificates = mod.lCertificates.Where(m => m.uprn.Contains(m.uprn)).ToList();
+            }
+            if(mod.certType != null)
+            {
+                mod.lCertificates = mod.lCertificates.Where(m => m.certtype.Contains(m.certtype)).ToList();
+            }
+
+                ViewBag.propertyid = String.IsNullOrEmpty(SortOrder) ? "propertyid_desc" : "";
+                ViewBag.uprn = SortOrder == "uprn" ? "uprn_desc" : "uprn";
+                ViewBag.addressline1 = SortOrder == "addressline1" ? "addressline1_desc" : "addressline1";
+                ViewBag.certtype = SortOrder == "certtype" ? "certtype_desc" : "certtype";
+                ViewBag.postcode = SortOrder == "postcode" ? "postcode_desc" : "postcode";
+                ViewBag.operativename = SortOrder == "operativename" ? "operativename_desc" : "operativename";
+                ViewBag.tradegroup = SortOrder == "tradegroup" ? "tradegroup_desc" : "tradegroup";
+                ViewBag.eDocsRef = SortOrder == "eDocsRef" ? "eDocsRef_desc" : "eDocsRef";
+                ViewBag.status = SortOrder == "status" ? "status_desc" : "status";
+                ViewBag.datetime = SortOrder == "datetime" ? "datetime_desc" : "datetime";
+                ViewBag.cause = SortOrder == "cause" ? "cause_desc" : "cause";
+
+                var emp = from s in db.FirstTouchCertificates
+                          select s;
+
+
+            if (!string.IsNullOrEmpty(SortOrder))
+            {
+                switch (SortOrder)
+                {
+                    case "propertyid_desc":
+
+                        mod.lCertificates = mod.lCertificates.AsEnumerable().OrderByDescending(s => s.propertyid).ToList();
+                       
+                        break;
+                    case "uprn_desc":
+                        emp = emp.OrderByDescending(s => s.uprn);
+                        break;
+                    case "uprn":
+                        emp = emp.OrderBy(s => s.uprn);
+                        break;
+                    case "addressline1_desc":
+                        emp = emp.OrderByDescending(s => s.addressline1);
+                        break;
+                    case "addressline1":
+                        emp = emp.OrderBy(s => s.addressline1);
+                        break;
+                    case "certtype_desc":
+                        emp = emp.OrderByDescending(s => s.certtype);
+                        break;
+                    case "certtype":
+                        emp = emp.OrderBy(s => s.certtype);
+                        break;
+                    case "postcode":
+                        emp = emp.OrderBy(s => s.postcode);
+                        break;
+                    case "operativename":
+                        emp = emp.OrderBy(s => s.operativename);
+                        break;
+                    case "tradegroup":
+                        emp = emp.OrderBy(s => s.tradegroup);
+                        break;
+                    case "eDocsRef":
+                        emp = emp.OrderBy(s => s.eDocsRef);
+                        break;
+                    case "status":
+                        emp = emp.OrderBy(s => s.status);
+                        break;
+                    case "datetime":
+                        emp = emp.OrderBy(s => s.datetime);
+                        break;
+                    case "cause":
+                        emp = emp.OrderBy(s => s.cause);
+                        break;
+                    case "postcode_desc":
+                        emp = emp.OrderByDescending(s => s.postcode);
+                        break;
+                    case "operativename_desc":
+                        emp = emp.OrderByDescending(s => s.operativename);
+                        break;
+                    case "tradegroup_desc":
+                        emp = emp.OrderByDescending(s => s.tradegroup);
+                        break;
+                    case "eDocsRef_desc":
+                        emp = emp.OrderByDescending(s => s.eDocsRef);
+                        break;
+                    case "status_desc":
+                        emp = emp.OrderByDescending(s => s.status);
+                        break;
+                    case "datetime_desc":
+                        emp = emp.OrderByDescending(s => s.datetime);
+                        break;
+                    case "cause_desc":
+                        emp = emp.OrderByDescending(s => s.cause);
+                        break;
+                    default:
+                        emp = emp.OrderBy(s => s.propertyid);
+                        break;
+                    
+
+
+                }
+                 
+             
 
             }
-            return View(emp.ToList());
+            
 
+
+          
+                return View(emp.ToList());
+          
+            
+              
+
+            
+
+           
         }
 
         // GET: Certificates/Details/5
@@ -158,6 +211,8 @@ namespace FirstTouchDashBoard.Controllers
             }
             return View(firstTouchCertificate);
         }
+
+       
 
         // POST: Certificates/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

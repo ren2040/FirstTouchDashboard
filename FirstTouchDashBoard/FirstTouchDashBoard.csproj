@@ -170,6 +170,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CertificateDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ExtendedCertificates.cs" />
     <Compile Include="Models\FirstTouchCertificate.cs">
       <DependentUpon>CertificateDB.tt</DependentUpon>
     </Compile>
