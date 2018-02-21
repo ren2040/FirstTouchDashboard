@@ -10,71 +10,95 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-@using (Html.BeginForm("Index","Certificates", FormMethod.Post))
-{
+@*@using (Html.BeginForm("Index", "Certificates", FormMethod.Post))
+    {*@
 
-    <p>
+@*<p>
         Certificate Type: @Html.EditorFor(Model => Model.certType)
-        @*@Html.ValidationMessageFor(model => model.certType)*@
+        @Html.ValidationMessageFor(model => model.certType)
 
-    </p>
-    <p>
-       UPRN : @Html.EditorFor(Model => Model.uprn)
-        @*@Html.ValidationMessageFor(model => model.uprn)*@
+    </p>*@
+@*<p>
+        UPRN : @Html.EditorFor(Model => Model.uprn)
+        @Html.ValidationMessageFor(model => model.uprn)
     </p>
     <p>
         Property ID: @Html.EditorFor(Model => Model.propertyid)
-        @*@Html.ValidationMessageFor(model => model.propertyid)*@
+        @Html.ValidationMessageFor(model => model.propertyid)
 
     </p>
     <p>
         Post Code: @Html.EditorFor(Model => Model.postCode)
-        @*@Html.ValidationMessageFor(model => model.postCode)*@
-        
+        @Html.ValidationMessageFor(model => model.postCode)
 
+
+    </p>*@
+@*<input type="submit" value="Search" class="btn btn-primary" />*@
+@*@Html.ActionLink("Property ID", "Index", new { SortOrder = ViewBag.propertyid })*@
+@*}*@
+
+<form>
+    <p>
+        Certificate type: <input type="text" name="filterCertType" value="@(ViewBag.filterCertType)">
+        
     </p>
-    <input type="submit" value="Search" class="btn btn-primary" />
-}
+    <p>
+        Property ID: <input type="text" name="filterPropId" value="@(ViewBag.filterPropId)">
+        
+    </p>
+    <p>
+        Post Code: <input type="text" name="filterPostCode" value="@(ViewBag.filterPostCode)">
+        
+    </p>
+    <p>
+        UPRN : <input type="text" name="filterUprn" value="@(ViewBag.filterUprn)">
+        
+    </p>
+    <p>
+        <input type="submit" value="Filter" />
+    </p>
+
+</form>
 
 <table class="table">
-  
-    
-        <tr>
-            <th>
-                @Html.ActionLink("Property ID", "Index", new { SortOrder = ViewBag.propertyid })
-            </th>
-            <th>
-                @Html.ActionLink("UPRN", "Index", new { SortOrder = ViewBag.uprn })
-            </th>
-            <th>
-                @Html.ActionLink("Address Line 1", "Index", new { SortOrder = ViewBag.addressline1 })
-            </th>
-            <th>
-                @Html.ActionLink("Certificate Type", "Index", new { SortOrder = ViewBag.certtype })
-            </th>
-            <th>
-                @Html.ActionLink("Post Code", "Index", new { SortOrder = ViewBag.postcode })
-            </th>
-            <th>
-                @Html.ActionLink("Operative Name", "Index", new { SortOrder = ViewBag.operativename })
-            </th>
-            <th>
-                @Html.ActionLink("Trade Group", "Index", new { SortOrder = ViewBag.tradegroup })
-            </th>
-            <th>
-                @Html.ActionLink("EDOCS ref", "Index", new { SortOrder = ViewBag.eDocsRef })
-            </th>
-            <th>
-                @Html.ActionLink("Status", "Index", new { SortOrder = ViewBag.status })
-            </th>
-            <th>
-                @Html.ActionLink("Date and Time", "Index", new { SortOrder = ViewBag.datetime })
-            </th>
-            <th>
-                @Html.ActionLink("Cause", "Index", new { SortOrder = ViewBag.cause })
-            </th>
-            <th></th>
-        </tr>
+
+
+    <tr>
+        <th>
+            @Html.ActionLink("Property ID", "Index", new { SortOrder = ViewBag.propertyid , filterCertType = ViewBag.filterCertType, filterPostCode = ViewBag.filterPostCode, filterPropId = ViewBag.filterPropId, filterUprn = ViewBag.filterUprn })
+        </th>
+        <th>
+            @Html.ActionLink("UPRN", "Index", new { SortOrder = ViewBag.uprn, filterCertType = ViewBag.filterCertType, filterPostCode = ViewBag.filterPostCode, filterPropId = ViewBag.filterPropId, filterUprn = ViewBag.filterUprn })
+        </th>
+        <th>
+            @Html.ActionLink("Address Line 1", "Index", new { SortOrder = ViewBag.addressline1, filterCertType = ViewBag.filterCertType, filterPostCode = ViewBag.filterPostCode, filterPropId = ViewBag.filterPropId, filterUprn = ViewBag.filterUprn })
+        </th>
+        <th>
+            @Html.ActionLink("Certificate Type", "Index", new { SortOrder = ViewBag.certtype , filterCertType = ViewBag.filterCertType , filterPostCode = ViewBag.filterPostCode, filterPropId = ViewBag.filterPropId, filterUprn = ViewBag.filterUprn })
+        </th>
+        <th>
+            @Html.ActionLink("Post Code", "Index", new { SortOrder = ViewBag.postcode, filterCertType = ViewBag.filterCertType , filterPostCode = ViewBag.filterPostCode, filterPropId = ViewBag.filterPropId, filterUprn = ViewBag.filterUprn })
+        </th>
+        <th>
+            @Html.ActionLink("Operative Name", "Index", new { SortOrder = ViewBag.operativename, filterCertType = ViewBag.filterCertType, filterPostCode = ViewBag.filterPostCode, filterPropId = ViewBag.filterPropId, filterUprn = ViewBag.filterUprn })
+        </th>
+        <th>
+            @Html.ActionLink("Trade Group", "Index", new { SortOrder = ViewBag.tradegroup , filterCertType = ViewBag.filterCertType , filterPostCode = ViewBag.filterPostCode, filterPropId = ViewBag.filterPropId, filterUprn = ViewBag.filterUprn })
+        </th>
+        <th>
+            @Html.ActionLink("EDOCS ref", "Index", new { SortOrder = ViewBag.eDocsRef, filterCertType = ViewBag.filterCertType , filterPostCode = ViewBag.filterPostCode, filterPropId = ViewBag.filterPropId, filterUprn = ViewBag.filterUprn })
+        </th>
+        <th>
+            @Html.ActionLink("Status", "Index", new { SortOrder = ViewBag.status , filterCertType = ViewBag.filterCertType , filterPostCode = ViewBag.filterPostCode, filterPropId = ViewBag.filterPropId, filterUprn = ViewBag.filterUprn })
+        </th>
+        <th>
+            @Html.ActionLink("Date and Time", "Index", new { SortOrder = ViewBag.datetime , filterCertType = ViewBag.filterCertType , filterPostCode = ViewBag.filterPostCode, filterPropId = ViewBag.filterPropId, filterUprn = ViewBag.filterUprn })
+        </th>
+        <th>
+            @Html.ActionLink("Cause", "Index", new { SortOrder = ViewBag.cause , filterCertType = ViewBag.filterCertType  , filterPostCode = ViewBag.filterPostCode, filterPropId = ViewBag.filterPropId, filterUprn = ViewBag.filterUprn })
+        </th>
+        <th></th>
+    </tr>
 
 
     @foreach (var item in Model.lCertificates)
