@@ -17,7 +17,7 @@ namespace FirstTouchDashBoard.Controllers
         // GET: Certificates
         [HttpGet]
         public ActionResult Index(string SortOrder, string filterCertType, string filterPostCode,
-            string filterPropId, string filterUprn)
+            string filterPropId, string filterUprn, int page = 0)
         {
             // Update viewbag with filter details
             if (string.IsNullOrEmpty(filterCertType))
@@ -174,44 +174,13 @@ namespace FirstTouchDashBoard.Controllers
                         break;
                 }
             }
-           
+            const int PageSize = 2;
+            var count = mod.lCertificates.Count();
+            mod.lCertificates = mod.lCertificates.Skip(page * PageSize).Take(PageSize).ToList();
 
-            // Condition with filter details --> use ViewBag
-           
-
-
-
-            //if (mod.from != null)
-            //{
-            //    mod.lCertificates = mod.lCertificates.Where(m => m.datetime > mod.from).ToList();
-            //}
-            //if(mod.to != null)
-            //{
-            //    mod.lCertificates = mod.lCertificates.Where(m => m.datetime < mod.to).ToList();
-            //}
-            //if(!string.IsNullOrEmpty(mod.postCode))
-            //{
-            //    mod.lCertificates = mod.lCertificates.Where(m => m.postcode.Contains(m.postcode)).ToList();
-            //}
-            //if(!string.IsNullOrEmpty(mod.propertyid))
-            //{
-            //    mod.lCertificates = mod.lCertificates.Where(m => m.propertyid.Contains(m.propertyid)).ToList();
-            //}
-            //if(!string.IsNullOrEmpty(mod.uprn))
-            //{
-            //        mod.lCertificates = mod.lCertificates.Where(m => m.uprn.Contains(mod.uprn)).ToList();
-            //}
-            //if(mod.certType != null)
-            //{
-            //    if (mod.certType.ToLower().Equals("both"))
-            //    {
-
-            //    }
-            //    else
-            //    {
-            //        mod.lCertificates = mod.lCertificates.Where(m => m.certtype.Contains(m.certtype)).ToList();
-            //    }
-            //}
+            this.ViewBag.MaxPage = (count / PageSize) - (count % PageSize == 0 ? 1  : 0);
+            this.ViewBag.Page = page;
+            
 
 
 
@@ -224,145 +193,7 @@ namespace FirstTouchDashBoard.Controllers
 
 
 
-
-        //// GET: Certificates
-        //[HttpPost]
-        //public ActionResult Index(string SortOrder, string type)
-        //{
-        //    ExtendedCertificates model = new ExtendedCertificates
-        //    {
-        //        lCertificates = db.FirstTouchCertificates.ToList()
-        //    };
-
-        //    ViewBag.propertyid = String.IsNullOrEmpty(SortOrder) ? "propertyid_desc" : "";
-        //    ViewBag.uprn = SortOrder == "uprn" ? "uprn_desc" : "uprn";
-        //    ViewBag.addressline1 = SortOrder == "addressline1" ? "addressline1_desc" : "addressline1";
-        //    ViewBag.certtype = SortOrder == "certtype" ? "certtype_desc" : "certtype";
-        //    ViewBag.postcode = SortOrder == "postcode" ? "postcode_desc" : "postcode";
-        //    ViewBag.operativename = SortOrder == "operativename" ? "operativename_desc" : "operativename";
-        //    ViewBag.tradegroup = SortOrder == "tradegroup" ? "tradegroup_desc" : "tradegroup";
-        //    ViewBag.eDocsRef = SortOrder == "eDocsRef" ? "eDocsRef_desc" : "eDocsRef";
-        //    ViewBag.status = SortOrder == "status" ? "status_desc" : "status";
-        //    ViewBag.datetime = SortOrder == "datetime" ? "datetime_desc" : "datetime";
-        //    ViewBag.cause = SortOrder == "cause" ? "cause_desc" : "cause";
-
-
-        //    if (!string.IsNullOrEmpty(SortOrder))
-        //    {
-        //        switch (SortOrder)
-        //        {
-        //            case "propertyid_desc":
-
-        //                model.lCertificates = model.lCertificates.AsEnumerable().OrderByDescending(s => s.propertyid).ToList();
-
-        //                break;
-        //            case "uprn_desc":
-        //                model.lCertificates = model.lCertificates.AsEnumerable().OrderByDescending(s => s.uprn).ToList();
-        //                break;
-        //            case "uprn":
-        //                model.lCertificates = model.lCertificates.AsEnumerable().OrderBy(s => s.uprn).ToList();
-        //                break;
-        //            case "addressline1_desc":
-        //                model.lCertificates = model.lCertificates.AsEnumerable().OrderByDescending(s => s.addressline1).ToList();
-        //                break;
-        //            case "addressline1":
-        //                model.lCertificates = model.lCertificates.AsEnumerable().OrderBy(s => s.addressline1).ToList();
-        //                break;
-        //            case "certtype_desc":
-        //                model.lCertificates = model.lCertificates.AsEnumerable().OrderByDescending(s => s.certtype).ToList();
-        //                break;
-        //            case "certtype":
-        //                model.lCertificates = model.lCertificates.AsEnumerable().OrderBy(s => s.certtype).ToList();
-        //                break;
-        //            case "postcode":
-        //                model.lCertificates = model.lCertificates.AsEnumerable().OrderBy(s => s.postcode).ToList();
-        //                break;
-        //            case "operativename":
-        //                model.lCertificates = model.lCertificates.AsEnumerable().OrderBy(s => s.operativename).ToList();
-        //                break;
-        //            case "tradegroup":
-        //                model.lCertificates = model.lCertificates.AsEnumerable().OrderBy(s => s.tradegroup).ToList();
-        //                break;
-        //            case "eDocsRef":
-        //                model.lCertificates = model.lCertificates.AsEnumerable().OrderBy(s => s.eDocsRef).ToList();
-        //                break;
-        //            case "status":
-        //                model.lCertificates = model.lCertificates.AsEnumerable().OrderBy(s => s.status).ToList();
-        //                break;
-        //            case "datetime":
-        //                model.lCertificates = model.lCertificates.AsEnumerable().OrderBy(s => s.datetime).ToList();
-        //                break;
-        //            case "cause":
-        //                model.lCertificates = model.lCertificates.AsEnumerable().OrderBy(s => s.cause).ToList();
-        //                break;
-        //            case "postcode_desc":
-        //                model.lCertificates = model.lCertificates.AsEnumerable().OrderByDescending(s => s.postcode).ToList(); ;
-        //                break;
-        //            case "operativename_desc":
-        //                model.lCertificates = model.lCertificates.AsEnumerable().OrderByDescending(s => s.operativename).ToList();
-        //                break;
-        //            case "tradegroup_desc":
-        //                model.lCertificates = model.lCertificates.AsEnumerable().OrderByDescending(s => s.tradegroup).ToList();
-        //                break;
-        //            case "eDocsRef_desc":
-        //                model.lCertificates = model.lCertificates.AsEnumerable().OrderByDescending(s => s.eDocsRef).ToList();
-        //                break;
-        //            case "status_desc":
-        //                model.lCertificates = model.lCertificates.AsEnumerable().OrderByDescending(s => s.status).ToList();
-        //                break;
-        //            case "datetime_desc":
-        //                model.lCertificates = model.lCertificates.AsEnumerable().OrderByDescending(s => s.datetime).ToList();
-        //                break;
-        //            case "cause_desc":
-        //                model.lCertificates = model.lCertificates.AsEnumerable().OrderByDescending(s => s.cause).ToList();
-        //                break;
-        //            default:
-        //                model.lCertificates = model.lCertificates.AsEnumerable().OrderBy(s => s.propertyid).ToList();
-        //                break;
-        //        }
-        //    }
-
-        //    if (model.from != null)
-        //    {
-        //        model.lCertificates = model.lCertificates.Where(m => m.datetime > model.from).ToList();
-        //    }
-        //    if (model.to != null)
-        //    {
-        //        model.lCertificates = model.lCertificates.Where(m => m.datetime < model.to).ToList();
-        //    }
-        //    if (!string.IsNullOrEmpty(model.postCode))
-        //    {
-        //        model.lCertificates = model.lCertificates.Where(m => m.postcode != null).ToList();
-        //        model.lCertificates = model.lCertificates.Where(m => m.postcode.Contains(model.postCode)).ToList();
-        //    }
-        //    if (model.propertyid != null)
-        //    {
-        //        model.lCertificates = model.lCertificates.Where(m => m.propertyid != null).ToList();
-        //        model.lCertificates = model.lCertificates.Where(m => m.propertyid.Contains(model.propertyid)).ToList();
-        //    }
-        //    if (!string.IsNullOrEmpty(model.uprn))
-        //    {
-        //        model.lCertificates = model.lCertificates.Where(m => m.uprn != null).ToList();
-        //        model.lCertificates = model.lCertificates.Where(m => m.uprn.Contains(model.uprn)).ToList();
-        //    }
-        //    if (model.certType != null)
-        //    {
-        //        if (model.certType.ToLower().Equals("both"))
-        //        {
-
-        //        }
-        //        else
-        //        {
-        //            model.lCertificates = model.lCertificates.Where(m => m.certtype != null).ToList();
-        //            model.lCertificates = model.lCertificates.Where(m => m.certtype.Contains(model.certType)).ToList();
-        //        }
-        //    }
-        //    return View(model);
-        //}
-
-
-
-        // GET: Certificates/Details/5
+        
         public ActionResult Details(int? id)
         {
             if (id == null)

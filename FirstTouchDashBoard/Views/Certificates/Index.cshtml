@@ -10,54 +10,43 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-@*@using (Html.BeginForm("Index", "Certificates", FormMethod.Post))
-    {*@
 
-@*<p>
-        Certificate Type: @Html.EditorFor(Model => Model.certType)
-        @Html.ValidationMessageFor(model => model.certType)
-
-    </p>*@
-@*<p>
-        UPRN : @Html.EditorFor(Model => Model.uprn)
-        @Html.ValidationMessageFor(model => model.uprn)
-    </p>
-    <p>
-        Property ID: @Html.EditorFor(Model => Model.propertyid)
-        @Html.ValidationMessageFor(model => model.propertyid)
-
-    </p>
-    <p>
-        Post Code: @Html.EditorFor(Model => Model.postCode)
-        @Html.ValidationMessageFor(model => model.postCode)
-
-
-    </p>*@
-@*<input type="submit" value="Search" class="btn btn-primary" />*@
-@*@Html.ActionLink("Property ID", "Index", new { SortOrder = ViewBag.propertyid })*@
-@*}*@
 
 <form>
     <p>
         Certificate type: <input type="text" name="filterCertType" value="@(ViewBag.filterCertType)">
-        
+
     </p>
     <p>
         Property ID: <input type="text" name="filterPropId" value="@(ViewBag.filterPropId)">
-        
+
     </p>
     <p>
         Post Code: <input type="text" name="filterPostCode" value="@(ViewBag.filterPostCode)">
-        
+
     </p>
     <p>
         UPRN : <input type="text" name="filterUprn" value="@(ViewBag.filterUprn)">
-        
+
     </p>
     <p>
         <input type="submit" value="Filter" />
     </p>
 
+    @if (ViewBag.Page > 0)
+    {
+        <a href="@Url.Action("Index", new { page = ViewBag.Page - 1 ,  SortOrder = ViewBag.propertyid , filterCertType = ViewBag.filterCertType, filterPostCode = ViewBag.filterPostCode, filterPropId = ViewBag.filterPropId, filterUprn = ViewBag.filterUprn})"
+           class=" = btn btn-default">
+            &laquo; Prev
+        </a>
+    }
+    @if (ViewBag.Page < ViewBag.MaxPage)
+    {
+        <a href="@Url.Action("Index", new { page = ViewBag.Page + 1 ,  SortOrder = ViewBag.propertyid , filterCertType = ViewBag.filterCertType, filterPostCode = ViewBag.filterPostCode, filterPropId = ViewBag.filterPropId, filterUprn = ViewBag.filterUprn})"
+           class="btn btn-default">
+            Next &raquo;
+        </a>
+    }
 </form>
 
 <table class="table">
@@ -144,5 +133,6 @@
             </td>
         </tr>
     }
+    
 
 </table>
