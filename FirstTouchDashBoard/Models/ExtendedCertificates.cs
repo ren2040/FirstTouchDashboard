@@ -14,7 +14,7 @@ namespace FirstTouchDashBoard.Models
         public DateTime from { get; set; }
         public DateTime to { get; set; }
         public string certType { get; set; }
-        public string uprn { get; set; }
+        public string uprn { get; set; }    
         public string propertyid { get; set; }
         public string postCode { get; set; }
 

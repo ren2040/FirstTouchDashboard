@@ -150,7 +150,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdministrationController.cs" />
     <Compile Include="Controllers\CertificatesController.cs" />
+    <Compile Include="Controllers\LoginCheck.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -173,11 +175,16 @@
     <Compile Include="Models\FirstTouchCertificate.cs">
       <DependentUpon>CertificateDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FirstTouchCertificateUser.cs">
+      <DependentUpon>CertificateDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FirstTouchCertificateUsers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\HackneyTemplateCSS.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -226,11 +233,13 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Certificates\Create.cshtml" />
-    <Content Include="Views\Certificates\Delete.cshtml" />
-    <Content Include="Views\Certificates\Details.cshtml" />
-    <Content Include="Views\Certificates\Edit.cshtml" />
     <Content Include="Views\Certificates\Index.cshtml" />
+    <Content Include="Views\Shared\Unauthorised.cshtml" />
+    <Content Include="Views\Administration\Create.cshtml" />
+    <Content Include="Views\Administration\Delete.cshtml" />
+    <Content Include="Views\Administration\Details.cshtml" />
+    <Content Include="Views\Administration\Edit.cshtml" />
+    <Content Include="Views\Administration\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

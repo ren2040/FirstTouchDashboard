@@ -26,5 +26,6 @@ namespace FirstTouchDashBoard.Models
         }
     
         public virtual DbSet<FirstTouchCertificate> FirstTouchCertificates { get; set; }
+        public virtual DbSet<FirstTouchCertificateUser> FirstTouchCertificateUser { get; set; }
     }
 }
