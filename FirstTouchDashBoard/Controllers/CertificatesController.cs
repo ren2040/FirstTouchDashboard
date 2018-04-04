@@ -20,7 +20,7 @@ namespace FirstTouchDashBoard.Controllers
         // GET: Certificates
         [HttpGet]
         public ActionResult Index(string SortOrder, string filterCertType, string filterPostCode,
-            string filterPropId, string filterUprn, string numberOfResults , int page = 0)
+            string filterPropId, string filterUprn, string numberOfResults = "top50" , int page = 0)
         {
             
             if (login.checkUserAccess() != true)
@@ -47,7 +47,7 @@ namespace FirstTouchDashBoard.Controllers
                 ViewBag.filterPostCode = filterPostCode;
                 ViewBag.filterPropId = filterPropId;
                 ViewBag.filterUprn = filterUprn;
-
+                ViewBag.numberOfResults = numberOfResults;
                
 
                
@@ -68,7 +68,7 @@ namespace FirstTouchDashBoard.Controllers
                 ViewBag.status = SortOrder == "status" ? "status_desc" : "status";
                 ViewBag.datetime = SortOrder == "datetime" ? "datetime_desc" : "datetime";
                 ViewBag.cause = SortOrder == "cause" ? "cause_desc" : "cause";
-                numberOfResults = ViewBag.numberOfResults  == "allResults" ? "top50" : "allResults";
+                ViewBag.numberOfResults = numberOfResults  == "allResults" ? "top50" : "allResults";
           
 
                 if (ViewBag.filterCertType.ToLower().Equals("both"))
