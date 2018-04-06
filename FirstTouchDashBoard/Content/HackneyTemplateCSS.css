@@ -299,9 +299,9 @@ table.generic th {
   background-color: #E0E0E0;
   font-weight: bold;
 }
-table.generic tr:last-child > td {
-  border-bottom: 0;
-}
+    table.generic tr:last-child > td {
+        inline-list border-bottom: 0;
+    }
 table.generic tr:nth-child(even) > td {
   background: #EEE;
 }

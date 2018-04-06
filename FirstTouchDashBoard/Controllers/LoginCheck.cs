@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace FirstTouchDashBoard.Controllers
 {
@@ -20,9 +21,9 @@ namespace FirstTouchDashBoard.Controllers
             var mod = new FirstTouchCertificateUsers();
             mod.lUsers = db.FirstTouchCertificateUser.ToList();
 
-            foreach(var user in mod.lUsers)
+            foreach (var user in mod.lUsers)
             {
-                if (user.userId == windowsUsername)
+                if (user.userId.ToLower() == windowsUsername.ToLower())
                 {
                     accessGranted = true;
                }

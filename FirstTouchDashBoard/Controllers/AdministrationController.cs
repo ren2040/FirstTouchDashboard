@@ -17,6 +17,8 @@ namespace FirstTouchDashBoard.Controllers
         // GET: Administration
         public ActionResult Index()
         {
+            var windowsUsername = Environment.UserName;
+            ViewBag.uname = windowsUsername;
             return View(db.FirstTouchCertificateUser.ToList());
         }
 

@@ -9,19 +9,21 @@
 <p>
     @Html.ActionLink("Add User", "Create")
 </p>
+<h1>Hello @ViewBag.uname !</h1>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.firstName)
+            
+			First name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.lastName)
+            Surname
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.userId)
+            User ID
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.email)
+            Email
         </th>
         <th></th>
     </tr>

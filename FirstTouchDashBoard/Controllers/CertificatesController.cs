@@ -20,7 +20,7 @@ namespace FirstTouchDashBoard.Controllers
         // GET: Certificates
         [HttpGet]
         public ActionResult Index(string SortOrder, string filterCertType, string filterPostCode,
-            string filterPropId, string filterUprn, string numberOfResults = "top50" , int page = 0)
+            string filterPropId, string filterUprn, int page =0 , string  numberOfResults = "top50"  )
         {
             
             if (login.checkUserAccess() != true)
@@ -48,6 +48,7 @@ namespace FirstTouchDashBoard.Controllers
                 ViewBag.filterPropId = filterPropId;
                 ViewBag.filterUprn = filterUprn;
                 ViewBag.numberOfResults = numberOfResults;
+                ViewBag.Page = page;
                
 
                
@@ -200,14 +201,15 @@ namespace FirstTouchDashBoard.Controllers
                             
                             mod.lCertificates = mod.lCertificates.Skip(page * 2).Take(2).ToList();
                         
-                            this.ViewBag.MaxPage = (count / 2) - (count % 2 == 0 ? 1 : 0);
-                            this.ViewBag.Page = page;
+                           TempData["Maxpage"] = (count / 2) - (count % 2 == 0 ? 1 : 0);
+                            
+                            TempData["page"] = page;
                             break;
                         case "allResults":
                             mod.lCertificates = mod.lCertificates.Skip(page * 9999).Take(9999).ToList();
                           
-                            this.ViewBag.MaxPage = (count / 99999) - (count % 9999 == 0 ? 1 : 0);
-                            this.ViewBag.Page = page;
+                            TempData["Maxpage"] = (count / 99999) - (count % 9999 == 0 ? 1 : 0);
+                            TempData["page"] = page;
                             break;
 
                     }
