@@ -11,15 +11,19 @@
 
 
 <form>
-   <fieldset> Certificate Type <select id="CertificateType" name="filterCertType" value ="@(ViewBag.filterCertType)">
+      <fieldset> Certificate Type <select id="CertificateType" name="filterCertType" value ="@(ViewBag.filterCertType)">
        
        
-       <option>Gas Service</option>
-       <option>Electrical installation certificate com</option>
-       <option selected ="selected">Both</option>
-       </select>
+            <option>Gas Service</option>
+            <option>Electrical installation certificate com</option>
+            <option selected ="selected">Both</option>
+        </select>
        
-   </fieldset>
+         </fieldset>
+   
+    <p>
+
+    </p>
     <p>
         Property ID: <input type="text" name="filterPropId" value="@(ViewBag.filterPropId)">
 

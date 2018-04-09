@@ -228,7 +228,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Certificates\Index.cshtml" />
+    <None Include="Views\Certificates\Index.cshtml" />
     <Content Include="Views\Shared\Unauthorised.cshtml" />
     <Content Include="Views\Administration\Create.cshtml" />
     <Content Include="Views\Administration\Delete.cshtml" />
