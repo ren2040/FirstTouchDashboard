@@ -148,6 +148,9 @@
     <Compile Include="Controllers\AdministrationController.cs" />
     <Compile Include="Controllers\CertificatesController.cs" />
     <Compile Include="Controllers\LoginCheck.cs" />
+    <Compile Include="Controllers\PageManagement\Filtering.cs" />
+    <Compile Include="Controllers\PageManagement\Paging.cs" />
+    <Compile Include="Controllers\PageManagement\Sorting.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
