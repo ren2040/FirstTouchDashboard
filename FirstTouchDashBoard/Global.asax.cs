@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using FirstTouchDashBoard.Controllers.PageManagement;
 
 namespace FirstTouchDashBoard
 {
@@ -16,6 +17,10 @@ namespace FirstTouchDashBoard
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            Paging paging = new Paging();
+            Sorting sorting = new Sorting();
+            Filtering filtering = new Filtering();
+            ControllerBuilder.Current.SetControllerFactory(new ControllerFactory(paging, sorting, filtering));
         }
     }
 }

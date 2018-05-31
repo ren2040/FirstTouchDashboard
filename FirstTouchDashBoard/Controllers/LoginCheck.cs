@@ -10,9 +10,9 @@ namespace FirstTouchDashBoard.Controllers
     public class LoginCheck
     {
 
-        public EDOCSIntegrationHubEntities db = new EDOCSIntegrationHubEntities();
-        public string windowsUsername;
-        public bool accessGranted = false;
+        private EDOCSIntegrationHubEntities db = new EDOCSIntegrationHubEntities();
+        private string windowsUsername;
+        private bool accessGranted = false;
         
 
         public bool checkUserAccess()

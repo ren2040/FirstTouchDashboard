@@ -6,8 +6,10 @@ using FirstTouchDashBoard.Models;
 
 namespace FirstTouchDashBoard.Controllers.PageManagement
 {
-    public class Sorting
+    public class Sorting : ISorting
+
     {
+       
         public List<FirstTouchCertificate> sortResults(ExtendedCertificates mod, string SortOrder)
         {
             if (!string.IsNullOrEmpty(SortOrder))

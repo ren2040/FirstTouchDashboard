@@ -7,8 +7,9 @@ using System.Web.Mvc;
 
 namespace FirstTouchDashBoard.Controllers.PageManagement
 {
-    public class Paging 
+    public class Paging : IPaging
     {
+      
         public List<FirstTouchCertificate> pagingResults(TempDataDictionary TempData, ExtendedCertificates mod, string numberOfResults, int page)
         {
             if (!string.IsNullOrEmpty(numberOfResults))

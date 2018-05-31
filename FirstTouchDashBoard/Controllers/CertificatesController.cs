@@ -14,7 +14,17 @@ namespace FirstTouchDashBoard.Controllers
     {
         public LoginCheck login = new LoginCheck();
         private EDOCSIntegrationHubEntities db = new EDOCSIntegrationHubEntities();
+        private IFiltering filteringi;
+        private ISorting sortingi;
+        private IPaging pagingi;
 
+        public CertificatesController(IPaging paging, ISorting sorting, IFiltering filtering)
+        {
+            filteringi = filtering;
+            pagingi = paging;
+            sortingi = sorting;
+        }
+        
         // GET: Certificates
         [HttpGet]
         public ActionResult Index(string SortOrder, string filterCertType, string filterPostCode,
@@ -55,9 +65,7 @@ namespace FirstTouchDashBoard.Controllers
                 var mod = new ExtendedCertificates();
                 mod.lCertificates = db.FirstTouchCertificates.ToList();
 
-                Filtering filtering = new Filtering();
-                Sorting sorting = new Sorting();
-                Paging paging = new Paging();
+               
 
                 ViewBag.propertyid = String.IsNullOrEmpty(SortOrder) ? "propertyid_desc" : "";
                 ViewBag.uprn = SortOrder == "uprn" ? "uprn_desc" : "uprn";
@@ -75,15 +83,14 @@ namespace FirstTouchDashBoard.Controllers
                 // Following single responsibility principle
                 
                 // Filtering certificates
-                mod.lCertificates = filtering.filterResults(mod, filterPropId, filterUprn, filterPostCode, filterCertType);
+                mod.lCertificates = filteringi.filterResults(mod, filterPropId, filterUprn, filterPostCode, filterCertType);
                 //Sorting certificates
-                mod.lCertificates = sorting.sortResults(mod, SortOrder);
+                mod.lCertificates = sortingi.sortResults(mod, SortOrder);
                 //paging
                 TempData["page"] = page;
 
-                mod.lCertificates = paging.pagingResults(TempData, mod, numberOfResults, page );
+                mod.lCertificates = pagingi.pagingResults(TempData, mod, numberOfResults, page );
                
-                
                 
 
                 return View(mod);

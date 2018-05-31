@@ -12,8 +12,9 @@ using System.Web.Mvc;
 
 namespace FirstTouchDashBoard.Controllers.PageManagement
 {
-    public class Filtering 
+    public class Filtering : IFiltering
     {
+        
         public List<FirstTouchCertificate> filterResults(ExtendedCertificates mod, String filterPropId, String filterUprn, String filterPostCode, String filterCertType)
         {
             if (filterCertType.ToLower().Equals("both"))

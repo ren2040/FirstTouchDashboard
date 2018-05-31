@@ -13,6 +13,10 @@ namespace FirstTouchDashBoard.Controllers
     public class AdministrationController : Controller
     {
         private EDOCSIntegrationHubEntities db = new EDOCSIntegrationHubEntities();
+        public AdministrationController()
+        {
+
+        }
 
         // GET: Administration
         public ActionResult Index()
