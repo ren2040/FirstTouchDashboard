@@ -121,37 +121,116 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.propertyid)
+                    @if (item.propertyid != null)
+                 {
+                @Html.DisplayFor(modelItem => item.propertyid)
+                    }
+                        else
+                    {
+                <p> ------- </p>
+                    }
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.uprn)
+                    @if (item.uprn != null)
+                     {
+                @Html.DisplayFor(modelItem => item.uprn)
+                     }
+                    else
+                    {
+                <p> ------- </p>
+                    }
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.addressline1)
+                    @if (item.addressline1 != null)
+                     {
+                @Html.DisplayFor(modelItem => item.addressline1)
+                    }
+                        else
+                    {
+                <p> ------- </p>
+                    }
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.certtype)
+                    @if (item.certtype != null)
+                    {
+                @Html.DisplayFor(modelItem => item.certtype)
+                         }
+                         else
+                         {
+                             <p> ------- </p>
+                         }
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.postcode)
+                    @if (item.postcode != null)
+    {
+                @Html.DisplayFor(modelItem => item.postcode)
+                }
+                else
+                {
+                                <p> ------- </p>
+                }
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.operativename)
+                    @if (item.operativename != null)
+    {
+                @Html.DisplayFor(modelItem => item.operativename)
+                        }
+                        else
+                        {
+                                        <p> ------- </p>
+                        }
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.tradegroup)
+
+                    @if (item.tradegroup != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.tradegroup)
+                    }
+                    else
+                    {
+                        <p> ------- </p>
+                    }
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.eDocsRef)
+                    @if (item.eDocsRef != null)
+                    {
+                        @Html.ActionLink(item.eDocsRef, "Index", new { SortOrder = ViewBag.cause, filterCertType = ViewBag.filterCertType, filterPostCode = ViewBag.filterPostCode, filterPropId = ViewBag.filterPropId, filterUprn = ViewBag.filterUprn, folderId = item.eDocsRef });
+                    }
+                   else
+                    {
+                        <p> ------- </p>
+                    }
+
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.status)
+                    @if (item.status != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.status)
+                    }
+                    else
+                    {
+                        <p> ------- </p>
+                    }
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.datetime)
+                    @if (item.datetime != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.datetime)
+                    }
+                    else
+                    {
+                        <p> ------- </p>
+                    }
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.cause)
+                    @if (item.cause != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.cause)
+                    }
+                    else
+                    {
+                        <p> ------- </p>
+                    }
                 </td>
 
             </tr>

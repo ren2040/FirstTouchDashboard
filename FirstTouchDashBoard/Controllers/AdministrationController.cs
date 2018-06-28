@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using FirstTouchDashBoard.Models;
@@ -108,6 +109,8 @@ namespace FirstTouchDashBoard.Controllers
                 return HttpNotFound();
             }
             return View(firstTouchCertificateUser);
+
+
         }
 
         // POST: Administration/Delete/5

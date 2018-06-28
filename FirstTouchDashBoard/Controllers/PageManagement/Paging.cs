@@ -19,9 +19,9 @@ namespace FirstTouchDashBoard.Controllers.PageManagement
                 {
                     case "top50":
 
-                        mod.lCertificates = mod.lCertificates.Skip(page * 2).Take(2).ToList();
+                        mod.lCertificates = mod.lCertificates.Skip(page * 10).Take(10).ToList();
 
-                        TempData["Maxpage"] = (count / 2) - (count % 2 == 0 ? 1 : 0);
+                        TempData["Maxpage"] = (count / 10) - (count % 10 == 0 ? 1 : 0);
 
                         TempData["page"] = page;
                         break;

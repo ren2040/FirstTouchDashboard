@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using FirstTouchDashBoard.Models;
 using FirstTouchDashBoard.Controllers.PageManagement;
 using System.Net;
+using System.Text;
 using System.Web;
 namespace FirstTouchDashBoard.Controllers
 {
@@ -28,7 +29,7 @@ namespace FirstTouchDashBoard.Controllers
         // GET: Certificates
         [HttpGet]
         public ActionResult Index(string SortOrder, string filterCertType, string filterPostCode,
-            string filterPropId, string filterUprn, int page =0 , string  numberOfResults = "top50"  )
+            string filterPropId, string filterUprn, int page =0 , string  numberOfResults = "top50" , string folderID= null )
         {
             
             if (login.checkUserAccess() != true)
@@ -37,7 +38,12 @@ namespace FirstTouchDashBoard.Controllers
             }
             else
             {
-
+                if (folderID != null)
+                {
+                    return File(Encoding.UTF8.GetBytes("Document;CDM;"+ folderID +";R"),
+                        "text/plain",
+                        string.Format($"SomethingReference.DRF"));
+                }
 
                 // Update viewbag with filter details
                 if (string.IsNullOrEmpty(filterCertType))
