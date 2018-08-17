@@ -156,28 +156,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CertificateDB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CertificateDB.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CertificateDB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CertificateDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CertificateDB.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CertificateDB.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\ExtendedCertificates.cs" />
-    <Compile Include="Models\FirstTouchCertificate.cs">
-      <DependentUpon>CertificateDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FirstTouchCertificateUser.cs">
-      <DependentUpon>CertificateDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\FirstTouchCertificateUsers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -192,25 +171,8 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\CertificateDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CertificateDB.Context.cs</LastGenOutput>
-      <DependentUpon>CertificateDB.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\CertificateDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CertificateDB.edmx</DependentUpon>
-      <LastGenOutput>CertificateDB.cs</LastGenOutput>
-    </Content>
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <EntityDeploy Include="Models\CertificateDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CertificateDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\CertificateDB.edmx.diagram">
-      <DependentUpon>CertificateDB.edmx</DependentUpon>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -257,13 +219,6 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="Web.config" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
